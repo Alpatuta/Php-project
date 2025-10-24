@@ -26,20 +26,6 @@ Este proyecto consume una API pública para obtener y mostrar:
 - 🏗️ Arquitectura orientada a objetos con PHP 8+
 - 📦 Separación de responsabilidades (clases, funciones, templates)
 
-## 📁 Estructura del Proyecto
-
-```
-.
-├── index.php                 # Punto de entrada principal
-├── consts.php               # Constantes de configuración
-├── functions.php            # Funciones auxiliares
-├── classes/
-│   └── NextMovie.php        # Clase para manejar datos de películas
-└── templates/
-    ├── head.php             # Head del HTML
-    ├── main.php             # Contenido principal
-    └── styles.php           # Estilos CSS personalizados
-```
 
 ## 🛠️ Requisitos
 
@@ -61,57 +47,6 @@ php -S localhost:8000
 # http://localhost:8000
 ```
 
-## 💻 Ejemplos de Código
-
-### Usar la clase `NextMovie`
-
-```php
-// Crear instancia desde la API
-$movie = NextMovie::fetch_and_create_movie(API_URL);
-
-// Obtener mensaje de tiempo restante
-$message = $movie->get_until_message();
-
-// Obtener todos los datos
-$data = $movie->get_data();
-```
-
-### Renderizar templates
-
-```php
-// Renderizar un template con datos
-render_template('main', [
-    'title' => 'Spider-Man',
-    'release_date' => '2025-07-24',
-    'until_message' => 'Se estrena este mes'
-]);
-```
-
-## 🎨 Personalización
-
-### Modificar estilos
-
-```bash
-# Edita el archivo de estilos
-nano templates/styles.php
-```
-
-### Cambiar mensajes de tiempo
-
-Modifica el método `get_until_message()` en `classes/NextMovie.php`:
-
-```php
-public function get_until_message(): string
-{
-    $days = $this->days_until;
-    return match (true) {
-        $days === 0 => "🎉 Hoy se estrena",
-        $days === 1 => "⏰ Mañana se estrena",
-        // ... personaliza los mensajes
-    };
-}
-```
-
 ## 🌐 API Utilizada
 
 **Endpoint:** `https://whenisthenextmcufilm.com/api`
@@ -131,15 +66,6 @@ public function get_until_message(): string
 }
 ```
 
-## 🧪 Testing
-
-```bash
-# Ejecutar el servidor de desarrollo
-php -S localhost:8000
-
-# Probar la conexión a la API
-curl https://whenisthenextmcufilm.com/api
-```
 
 ## 📝 Notas Técnicas
 
@@ -147,39 +73,6 @@ curl https://whenisthenextmcufilm.com/api
 - Implementa el patrón de diseño Factory con `fetch_and_create_movie()`
 - Usa `match` expressions (PHP 8+) para lógica condicional más limpia
 - Renderizado de templates mediante `extract()` y `require`
-
-## 🤝 Contribuciones
-
-```bash
-# 1. Haz fork del proyecto
-
-# 2. Crea una rama para tu feature
-git checkout -b feature/nueva-caracteristica
-
-# 3. Commit tus cambios
-git commit -am 'Agrega nueva característica'
-
-# 4. Push a la rama
-git push origin feature/nueva-caracteristica
-
-# 5. Abre un Pull Request
-```
-
-## 🐛 Resolución de Problemas
-
-### Error: "Call to undefined function file_get_contents()"
-
-```bash
-# Verifica que PHP tenga habilitado allow_url_fopen
-php -i | grep allow_url_fopen
-```
-
-### Error: "Class 'NextMovie' not found"
-
-```bash
-# Asegúrate de que los archivos estén en la ubicación correcta
-ls -la classes/NextMovie.php
-```
 
 ## 📄 Licencia
 
@@ -191,15 +84,9 @@ Este proyecto es de código abierto y está disponible bajo la licencia MIT.
 - Framework CSS: [Pico CSS](https://picocss.com/)
 - Datos de películas: Marvel Studios
 
----
-
-⭐ Si te gusta este proyecto, ¡dale una estrella en GitHub!
-
-## 📞 Contacto
-
-¿Preguntas o sugerencias? Abre un issue en GitHub.
 
 ```bash
 # Reportar un bug
 gh issue create --title "Bug: descripción" --body "Detalles del problema"
 ```
+
